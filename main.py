@@ -1,5 +1,3 @@
-# This is a sample Python script.
-
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 # Список : [-2, 5, 18, -11, 6]
@@ -19,15 +17,7 @@ def count_negative(item_list):
     return count
 print(count_negative(lst))
 
-# def print_hi(name):
-#     # Use a breakpoint in the code line below to debug your script.
-#
+print("Вносим изменения")
+print("Опять вносим изменения")
 
 
-
-    # print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    # print_hi('PyChaww.jetbrains.com/help/pycharm/
