@@ -16,10 +16,14 @@ my_file =open("text1.txt", 'r')
 a = my_file.readlines()
 print(a)
 
-if 0 <= pos1 <= len(text) and 0 <= pos2 <= len(text) and pos1 != pos2:
-#     a[1] = a[2]:
-    for pos in range(len(a)):
-        c = a[pos1], a[pos1] = a[pos2], a[pos2] = c
+pos1 = int(input("Введите индекс первой строки для замены"))
+pos2 = int(input("Введите индекс второй строки для замены"))
+if 0 <= pos1 <= len(my_file) and 0 <= pos2 <= len(my_file) and pos1 != pos2:
+    for i in range(len(a)):
+        if i == pos1:
+            a[i] = a[pos2]
+        elif i == pos2:
+            a[i] = a[pos1]
 print(a)
 my_file.close()
 
