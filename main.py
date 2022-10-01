@@ -172,6 +172,89 @@
 #             Производитель: {self.__model}
 
 
-text = "Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;"
-with open("text1.txt", 'w',encoding='UTF-8') as f:
-    print(f.write(text))
+# text = "Замена строки в текстовом файле;\nизменить строку в списке;\nзаписать список в файл;"
+# with open("text1.txt", 'w', encoding='UTF-8') as f:
+#     print(f.write(text))
+
+# f = open(r'C:\Users\Dmitry\Scripts\HomeWork\text.txt', 'a', encoding='UTF-8')
+# # f.write('Hello,\nWorld')
+# f.write('\nnew text')
+# f.close()
+
+# print(f.closed)
+# print(f.mode)
+# print(f.name)
+# print(f.encoding)
+
+# print(len(f.readlines()))
+# print(f.read(3))
+# print(f.read())
+
+# cnt = 0
+# for l in f:
+#     cnt += 1
+# print(cnt)
+
+# cnt = 0
+# s = f.readline()
+# while s != "":
+#     s = f.readline()
+#     cnt += 1
+# print(cnt)
+
+# print(f.readline())
+# print(f.readline())
+#
+# print(f.readline())
+
+
+# [10:47] Козякина Елена
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#
+#
+# p1 = Point(5, 10)
+# p1.z = 2
+# print(p1.z)
+# print(p1.__dict__)
+
+# class Person:
+#     def __init__(self, name, old):
+#         self.__name = name
+#         self.__old = old
+#
+#
+#     @property
+#     def name(self):
+#         return self.name
+#
+#     @name.setter
+#     def name(selfself,n):
+#         self.name = n
+#
+#     @name.deleter
+#     def name(self):
+#         del self.name
+#
+# p1 = Person['Irina', 26]
+# print(p1.name)
+# p1.name = 'Igor'
+# del p1.name
+# print(p1.__dict__)
+# p1.old = '31'
+# del p1.old
+# print(p1.__dict__)
+#
+
+# class Nunbers:
+#     @staticmethod
+#     def minimum(a,b,c,d):
+#         min = min(a,b,c,d)
+#         return min
+# print("Минимальное число>", Nunbers.minimum(4,5,9,2))
+
+f = open('text.txt', 'r')
+
+print(f)
