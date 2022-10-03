@@ -1,10 +1,11 @@
+#    DZ from lesson
+#   -----------------
+
 # Список : [-2, 5, 18, -11, 6]
 # Вычислить количество отрицательных элементов в списке с помощью рекурсии.
+
 # import os.path
-#
 # lst = [-2, 3, 8, -11, -4, 6]
-#
-#
 # def count_negative(item_list):
 #     count = 0
 #     for item in item_list:
@@ -12,16 +13,11 @@
 #             count = count
 #         else:
 #             count += 1
-#
 #     return count
 # print(count_negative(lst))
+# -------------------------------------------------------------------------------------------
 
-# print("Вносим изменения")
-# print("Опять вносим изменения")
-
-
-
-# №2 (dz от 11.09.22 в Журнале)
+#  DZ от 11.09.22 в Журнале
 
 # Найти дату в формате dd/vv/yyyy .
 # В июне 2021 года, 02/06/2021, 05/06/2021, 14/06/2021 были зафиксированы максимуьы ежедневных осадкод.
@@ -36,14 +32,12 @@
 # name = "В июне 2021 года, 02/06/2021, 05/06/2021, 14/06/2021, были зафиксированы максимумы ежемесячных осадков."
 # print(test(name))
 #
-#
-# # ВТОРОЙ ВАРИАНТ:
+# ВТОРОЙ ВАРИАНТ:
 #
 # # test = "В июне 2021 года, 02/06/2021, 05/06/2021, 14/06/2021, были зафиксированы максимумы ежемесячных осадков."
 # # reg = r'((0[25]|14)/(06)/(2021))'
 # # print(re.findall(reg,test))
-#
-# print("PyCharm")
+# ------------------------------------------------------------------------------------------------------------------
 
 
 # size = os.path.getsize(path)
@@ -53,8 +47,9 @@
 # print(c_time)
 # print(time.strtime("%d.%m.%Y,%H:%M:%S",time.localtime(c_time)))
 #
-#
-# ООП
+# ------------------------------------------------------------------------------------------------------------------
+#                 ООП
+#              ---------
 # class Point:
 #     """"Класс для предоставления координат точек на плоскости"""
 #
@@ -97,7 +92,7 @@
 #
 #     def set_name(self,name):  # установить имя
 #         self,name =
-#
+# -------------------------------------------------------------------------------------
 # class Point:
 #     x = 1
 #     y = 1
@@ -255,6 +250,168 @@
 #         return min
 # print("Минимальное число>", Nunbers.minimum(4,5,9,2))
 
-f = open('text.txt', 'r')
+# f = open('text.txt', 'r')
 
-print(f)
+
+            # Д.Задание из класса
+           # -------------------------
+class Weight:
+    def __init__(self, k=0):
+        self.__k = k
+
+    @ property
+    def kg_k(self):
+        return self.__k
+
+    @kg_k.setter
+    def kg_k(self, k):
+        if isinstance (k, int, float):
+            self.__k = k
+        else:
+            print("Килограммы должны быть заданны числами")
+
+    def to_pounds(self):
+        return  self.__k * 2.205
+
+
+w1 = Weight(12)
+print(w1.kg_k, "кг => ", end='')
+print(w1.to_pounds(), "фунтов")
+
+
+           # 2.10.22 методы в классах
+
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = 'RUB'
+#     suffix = 'EUR'
+#     def __init__(self, num, surname, percent, value=0):
+#         self.num = num
+#         self.surname = surname
+#         self.percent = percent
+#         self.value = value
+#         print(f'Счёт #{self.num} принадлежит {self.surname} был открыт.')
+#         print('*' * 50)
+#
+#     def __del__(self):
+#         print('*' * 50)
+#         print(f'Счёт #{self.num} был закрыт.')
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, value, rate ):
+#         return value * rate
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f'Состояние счёта: {usd_val} {Account.suffix}')
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f'Состояние счёта: {eur_val} {Account.suffix}')
+#
+#     def print_balance(self):
+#         print(f'Текущий баланс {self.value} {Account.suffix}')
+#
+#     def print_info(self):
+#         print(f'Инф о счёте')
+#         print('-' * 20)
+#         print(f'#{self.num}')
+#         print(f'Владелец {self.surname}')
+#         self.print_balance()
+#         print(f'Проценты: {self.percent:.0%}')
+#         print('-' * 20)
+#
+#     def add_percents(self):
+#         self.value += self.value * self.percent
+#         print('Проценты начислены')
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f'К сожалению Вы не можете снять {val}')
+#         else:
+#             self.value -= val
+#             print(f'{val} RUB было успешно снято')
+#         self.print_balance
+#
+#     def add_money(self, ):
+#         self.value += val
+#         print(f'{val} RUB было добавлено')
+#
+#
+#
+# acc = Account('12345', 'Долгих', 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+#
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+#
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+#
+# acc.add_percents()
+#
+# acc.withdraw_money(3000)
+# print()
+#
+# acc.add_money(5000)
+# print()
+#
+# acc.withdraw_money(3000)
+# print()
+
+
+
+
+
+             # Задача № 2
+
+# import re
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#         self.verify_fio(fio)
+#         self.verify_old(old)
+#         self.verify_weight(weight)
+#
+#         self.__fio = fio.split()
+#         self.__old = old
+#         self.__password = ps
+#         self.__weight = weight
+#
+#     @classmethod
+#     def verify_fio(cls, fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должны быть строкой")
+#         f = fio.split()
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         letters = "".join(re.findall(r'[a-zа-яё-]', fio, flags=re.IGNORECASE))
+#
+#         for s in f:
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @classmethod
+#     def verify_old(cls, old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом в диапазоне от 14 до 120 лет")
+#
+#     @classmethod
+#     def verify_weight(cls, w):
+#         if not isinstance(w, float) or w < 20:
+#             raise TypeError("Вес должен быть вещественным числом от 20 кг и выше")
+#
+# p1 = UserData("Волков Игорь Николаевич", 51, "1234 567890", 72.0)
+
+
+

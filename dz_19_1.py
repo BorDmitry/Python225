@@ -6,8 +6,8 @@ my_file = open("text1.txt", 'r')
 new_f = my_file.readlines()
 print(new_f)
 my_file.close()
-pos1 = int(input("Введите индекс первой строки для замены>"))
-pos2 = int(input("Введите индекс второй строки для замены>"))
+pos1 = int(input("Введите индекс первой строки для замены >"))
+pos2 = int(input("Введите индекс второй строки для замены >"))
 
 if 0 <= pos1 <= len(new_f) and 0 <= pos2 <= len(new_f) and pos1 != pos2:
     for i in range(len(new_f)):
