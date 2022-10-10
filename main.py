@@ -366,10 +366,6 @@
 #
 #            2.10.22 методы в классах
 #
-#
-#
-
-
 
 # class Account:
 #     rate_usd = 0.013
@@ -549,54 +545,66 @@
 #
 #                   Задача / Рисование
 #                ------------------------
-class Point:
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
-
-    def __str__(self):
-        return f'({self.__x}, {self.__y})'
-
-class Prop:
-    def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
-        print("Инициализатор базового класса Prop")
-        if isinstance(sp, int) and isinstance(ep, int):
-            self._sp = sp
-            self._ep = ep
-        else:
-            print("Координаты должны быть только целочисленными значениями")
-            return False
-        self._color = color
-        self.__width = width
-
-    def get_width(self):
-        return self.__width
-
-class Line(Prop):
-    def __init__(self, *args):
-        print('Переопределённый инициализатор line')
-        super().__init__(*args)
-        self.__width = 5
-    def draw_line(self) -> None:
-        print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
-
-class Rect(Prop):
-
-    def __init__(self, sp, ep, color='red', width=1, bg='yellow'):
-        super().__init__(sp, ep, color, width)
-        self.background = bg
-
-    def draw_rect(self) -> None:
-        print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
-
-
-line = Line(Point(1, 2), Point(10, 20), 'green', 3)
-line.draw_line()
-print(line.__dict__)
-# print(line._width)
-# print(type(line))
-rect = Rect(Point(30, 40), Point(70, 80))
-rect.draw_rect()
+# class Point:
+#     def __init__(self, x=0, y=0):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f'({self.__x}, {self.__y})'
+#
+#     def is_int(self):
+#         # if not isinstance(self.__x, int) or not isinstance(self.__y):
+#         #     print(("Координаты должны быть только целочисленными значениями")
+#         # else:
+#             self._sp = sp
+#             self._ep = ep
+#             self._color = color
+#             self.__width = width
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
+#         print("Инициализатор базового класса Prop")
+#         if isinstance(sp, int) or isinstance(ep, int):
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть только целочисленными значениями")
+#             return False
+#         return True
+#
+#     def get_width(self):
+#         return self.__width
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         print('Переопределённый инициализатор line')
+#         super().__init__(*args)
+#         self.__width = 5
+#     def draw_line(self) -> None:
+#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
+#
+#     def set_coords(selfs, sp, ep):
+#         if sp.is_int() and ep.is_int():
+#             selfs.sp = sp
+#             selfs.ep = ep
+# class Rect(Prop):
+#
+#     def __init__(self, sp, ep, color='red', width=1, bg='yellow'):
+#         super().__init__(sp, ep, color, width)
+#         self.background = bg
+#
+#     def draw_rect(self) -> None:
+#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), 'green', 3)
+# line.draw_line()
+# line.set_coords(Point(10.2,15))
+# print(line.__dict__)
+# # print(line._width)
+# # print(type(line))
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
 
 # print(issubclass(Point, object))
 # print(line.__dict__)
@@ -680,6 +688,180 @@ rect.draw_rect()
 #         return True
 
 
+# 09.10.2022
+# -------------
 
 
 
+# shape1 = RecFon(400, 200, 'yellow')
+# shape1.show_rect()
+#
+# shape2 = RecBorder(600, 300, '1px solid red')
+# shape2.show_rect()
+
+# class RectBorder(Rect):
+#     def __init__(self, w, h, br):
+#         self.border = br
+#         super().__init__(w,h)
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print(f'Рамка(border): {self.border}')
+
+
+
+# class Vector(list):
+#     def __str__(self):
+#         return " ".join((map(str, self)))
+#
+#
+#
+# v = Vector([1, 2, 3, 4, 5])
+# print(v)
+# print(type(v))
+
+
+      # Перегрузка методов
+      # ------------------
+
+
+
+    #  Абстрактные методы
+    # --------------------
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f'({self.__x}, {self.__y})'
+#
+#     def is_digit(self):
+#         if not isinstance(self.__x, (int, float)) and not isinstance(self.__y, (int, float)):
+#             print("Координаты должны быть числами")
+#             return False
+#         return True
+#
+# class Line(Prop):
+#     def draw(self) -> None:
+#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
+#
+#     class Ellipse(Prop):
+#         def draw(self) -> None:
+#             print(f'Рисование элипса: {self._sp}, {self._ep}, {self._color}, {self.__width}')
+#
+
+
+   # Задача  Стол
+  # --------------
+# import math
+# class Table:
+#     def __init__(self, width=None, length=None, radius=None):
+#         if radius is None:
+#             self._width = width
+#             self.length = length
+#         else:
+#             self._radius = radius
+#     def cals_area(self):
+#         raise NotImplementedError("В дочернем классе должен быть определён метод calc_area()")
+#
+# class SqTable(Table):
+#     def calc_area(self):
+#         return self.width * self.length
+#
+# class RoundTable(Table):
+#     def calc_area(self):
+#         return round(math.pi * self._radius ** 2, 2)
+#
+#
+#
+# t = SqTable(20, 10)
+#
+# from abc import ABC, abstractmethod
+# class Chess(ABC):
+#     def draw(self):
+#         print("Нарисовал шахматную фигуру")
+#
+#     @abstractmethod
+#     def move(self):
+#         print("Метод move() в базовом классе")
+# class Queen(Chess):
+#     def move(self):
+#         super().move()
+#         print("Ферзь перемещён e2-e4")
+#
+# q = Queen()
+# q.draw()
+#
+#
+#
+#   #     Абстрактный класс Валюта
+#    #     ----------------------
+#
+# class Currency(ABC):
+#     def __init__(self, value):
+#         self.value = value
+#
+#     @abstractmethod
+#     def convert_to_rub(selfs):
+#         pass
+#
+#     def print_value(self):
+#         print(self.value, end=" ")
+#
+# class Euro(Currency):
+#     rate_to_rub = 90.14
+#     suffix = 'EUR'
+#
+#     def convert_to_rub(self):
+#         rub = self.value * Euro.rate_to_rub
+#         return rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Euro.suffix, end=' ')
+# class Dollar(Currency):
+#     rate_to_rub = 74.16
+#     sufffix = 'USD'
+#
+#     def convert_to_rub(self):
+#         rub = self.value * Dollar.rate_to_rub
+#         return rub
+#
+#     def print_value(self):
+#         super().print_value()
+#         print(Dollar.sufffix)
+#
+#
+#
+# d = [Dollar(5), Dollar(10), Dollar(50), Dollar(100)]
+# e = [Euro(5), Euro(10), Euro(50), Euro(100)]
+# print('*' * 30)
+# for elem in d:
+#     elem.print_value()
+#     print(f'={elem.convert_to_rub():.2f} RUB')
+#
+# for elem in e:
+#     elem.print_value()
+#     print(f'={elem.convert_to_rub():.2f} RUB')
+
+
+
+# Интерфейс
+
+
+from abc import ABC, abstractmethod
+
+class Father
+
+
+    @
+
+
+
+    @display2
+
+
+class Child(Father):
+    def di
