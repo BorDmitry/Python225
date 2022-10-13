@@ -504,16 +504,13 @@
 #             raise  TypeError("Паспорт должен быть строкой")
 #
 #     @property
-#     def fio(cls):
+#     def fio(self):
 #         return self.__fio
 #
 #     @fio.setter
-#     def name(self, name):
-#         self.__name = name
-#
-#
-#
-#
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
 #
 #     @property
 #     def old(self):
@@ -526,88 +523,98 @@
 #
 #     @property
 #     def password(self):
-#         return str.__password
+#         return self.__password
 #
 #     @password.setter
 #     def password(self, ps):
 #         self.verify_ps(ps)
+#         self.__password = ps
 #
 #     @property
-#     def weigth(self, w):
+#     def weight(self):
+#         return self.__weight
+#
+#     @weight.setter
+#     def weight(self, w):
 #         self.verify_weight(w)
 #         self.__weight = w
 #
 # p1 = UserData("Волков Игорь Николаевич", 51, "1234 567890", 72.0)
 # p1.fio = 'Соболев Игорь Николае'
-#
-#
-#
+# print(p1.__dict__)
+# print(p1.fio)
+# p1.old = 35
+# p1.password = '4567 123456'
+# p1.weight = 70.0
+# print(p1.__dict__)
 #
 #                   Задача / Рисование
 #                ------------------------
-# class Point:
-#     def __init__(self, x=0, y=0):
-#         self.__x = x
-#         self.__y = y
-#
-#     def __str__(self):
-#         return f'({self.__x}, {self.__y})'
-#
-#     def is_int(self):
-#         # if not isinstance(self.__x, int) or not isinstance(self.__y):
-#         #     print(("Координаты должны быть только целочисленными значениями")
-#         # else:
-#             self._sp = sp
-#             self._ep = ep
-#             self._color = color
-#             self.__width = width
-# class Prop:
-#     def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
-#         print("Инициализатор базового класса Prop")
-#         if isinstance(sp, int) or isinstance(ep, int):
-#             self._sp = sp
-#             self._ep = ep
-#         else:
-#             print("Координаты должны быть только целочисленными значениями")
-#             return False
-#         return True
-#
-#     def get_width(self):
-#         return self.__width
-#
-# class Line(Prop):
-#     def __init__(self, *args):
-#         print('Переопределённый инициализатор line')
-#         super().__init__(*args)
-#         self.__width = 5
-#     def draw_line(self) -> None:
-#         print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
-#
-#     def set_coords(selfs, sp, ep):
-#         if sp.is_int() and ep.is_int():
-#             selfs.sp = sp
-#             selfs.ep = ep
-# class Rect(Prop):
-#
-#     def __init__(self, sp, ep, color='red', width=1, bg='yellow'):
-#         super().__init__(sp, ep, color, width)
-#         self.background = bg
-#
-#     def draw_rect(self) -> None:
-#         print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
-#
-#
-# line = Line(Point(1, 2), Point(10, 20), 'green', 3)
-# line.draw_line()
-# line.set_coords(Point(10.2,15))
-# print(line.__dict__)
-# # print(line._width)
-# # print(type(line))
-# rect = Rect(Point(30, 40), Point(70, 80))
-# rect.draw_rect()
+class Point:
+    def __init__(self, x=0, y=0):
+        self.__x = x
+        self.__y = y
 
-# print(issubclass(Point, object))
-# print(line.__dict__)
+    def __str__(self):
+        return f'({self.__x}, {self.__y})'
+
+    def is_int(self):
+        if not isinstance(self.__x, int) or not isinstance(self.__y):
+            print(("Координаты должны быть только целочисленными значениями")
+        else:
+            self._sp = sp
+            self._ep = ep
+            self._color = color
+            self._width = width
+class Prop:
+    def __init__(self, sp: Point, ep: Point, color: str = 'red', width: int = 1):
+        print("Инициализатор базового класса Prop")
+        if isinstance(sp, int) or isinstance(ep, int):
+            self._sp = sp
+            self._ep = ep
+            self._color = color
+            self._width = width
+        else:
+            print("Координаты должны быть только целочисленными значениями")
+            return False
+        return True
+
+    def get_width(self):
+        return self.__width
+
+class Line(Prop):
+    def __init__(self, *args):
+        print('Переопределённый инициализатор line')
+        super().__init__(*args)
+        self.__width = 5
+    def draw_line(self) -> None:
+        print(f'Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.__width}')
+
+    def set_coords(selfs, sp, ep):
+        if sp.is_int() and ep.is_int():
+            selfs.sp = sp
+            selfs.ep = ep
+class Rect(Prop):
+
+    def __init__(self, sp, ep, color='red', width=1, bg='yellow'):
+        super().__init__(sp, ep, color, width)
+        self.background = bg
+
+    def draw_rect(self) -> None:
+        print(f'Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self._width}')
+
+
+line = Line(Point(1, 2), Point(10, 20), 'green', 3)
+line.draw_line()
+line.set_coords(Point(10.2,15))
+print(line.__dict__)
+# print(line._width)
+# print(type(line))
+rect = Rect(Point(30, 40), Point(70, 80))
+rect.draw_rect()
+
+print(issubclass(Point, object))
+print(line.__dict__)
 
 
 
@@ -853,15 +860,15 @@
 
 from abc import ABC, abstractmethod
 
-class Father
-
-
-    @
-
-
-
-    @display2
-
-
-class Child(Father):
-    def di
+# class Father
+#
+#
+#     @
+#
+#
+#
+#     @display2
+#
+#
+# class Child(Father):
+#     def di
