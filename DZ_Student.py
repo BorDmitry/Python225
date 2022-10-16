@@ -13,7 +13,7 @@ class Student:
             self.obj = obj
 
         def notebook_metod(self):
-            print(f'{self.obj.name} => {nb.model}, {nb.processor}, {nb.memory}')
+            print(f'{self.obj.name} => {self.model}, {self.processor}, {self.memory}')
 
 
 st = Student('Roman')
