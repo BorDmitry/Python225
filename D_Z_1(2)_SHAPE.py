@@ -88,7 +88,7 @@ class Triangle(Shape):
 
     def draw(self) -> None:
         count1 = 1
-        count2 = self.a - 1 / 2
+        count2 = self.a / 2
         for i in range(self.b):
             print(" " * int(count2), "*" * count1)
             count1 += 2

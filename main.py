@@ -1555,60 +1555,62 @@
 #     print(i.info(), '\n', i.make_sound())
 
 
-#   vid #13 /2:24----------------------------------------------------------------------
-class Human:
-    def __init__(self, lastname, name, age):
-        self.lastname = lastname
-        self.name = name
-        self.age = age
+#   video #13 /2:24----------------------------------------------------------------------
+# class Human:
+#     def __init__(self, lastname, name, age):
+#         self.lastname = lastname
+#         self.name = name
+#         self.age = age
+#
+#     def info(self):
+#         print(f'\n{self.lastname} {self.name} {self.age}', end='')
+#
+#
+# class Student(Human):
+#     def __init__(self, lastname, name, age, speciality, group, make):
+#         super().__init__(lastname, name, age)
+#         self.speciality = speciality
+#         self.group = group
+#         self.make = make
+#
+#     def info(self):
+#         super().info()
+#         print(f'{self.speciality} {self.group} {self.make}', end='')
+#
+#
+# class Teacher(Human):
+#     def __init__(self, lastname, name, age, subject, exp):
+#         super().__init__(lastname, name, age)
+#         self.subject = subject
+#         self.exp = exp
+#
+#     def info(self):
+#         super().info()
+#         print(f' {self.subject} {self.exp}', end='')
+#
+#
+# class Graduate(Student):
+#     def __init__(self, lastname, name, age, speciality, group, make, protect):
+#         super().__init__(lastname, name, age, speciality, group, make)
+#         self.protect = protect
+#
+#     def info(self):
+#         super().info()
+#         print(f' {self.protect}',end='')
+#
+#
+# group = [
+#     Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
+#     Student("Загидуллин", "Линар", 32, "РПО", "PD_011", 5),
+#     Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
+#     Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
+#     Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
+#     Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
+# ]
+# for k in group:
+#     k.info()
 
-    def info(self):
-        print(f'\n{self.lastname} {self.name} {self.age}', end='')
 
-
-class Student(Human):
-    def __init__(self, lastname, name, age, speciality, group, make):
-        super().__init__(lastname, name, age)
-        self.speciality = speciality
-        self.group = group
-        self.make = make
-
-    def info(self):
-        super().info()
-        print(f'{self.speciality} {self.group} {self.make}', end='')
-
-
-class Teacher(Human):
-    def __init__(self, lastname, name, age, subject, exp):
-        super().__init__(lastname, name, age)
-        self.subject = subject
-        self.exp = exp
-
-    def info(self):
-        super().info()
-        print(f' {self.subject} {self.exp}', end='')
-
-
-class Graduate(Student):
-    def __init__(self, lastname, name, age, speciality, group, make, protect):
-        super().__init__(lastname, name, age, speciality, group, make)
-        self.protect = protect
-
-    def info(self):
-        super().info()
-        print(f' {self.protect}',end='')
-
-
-group = [
-    Student("Батодалаев", "Даши", 16, "ГК", "Web_011", 5),
-    Student("Загидуллин", "Линар", 32, "РПО", "PD_011", 5),
-    Graduate("Шугани", "Сергей", 15, "РПО", "PD_011", 5, "Защита персональных данных"),
-    Teacher("Даньшин", "Андрей", 38, "Астрофизика", 110),
-    Student("Маркин", "Даниил", 17, "ГК", "Python_011", 5),
-    Teacher("Башкиров", "Алексей", 45, "Разработка приложений", 20)
-]
-for k in group:
-    k.info()
 
 #23.10.22
 
@@ -1640,6 +1642,9 @@ for k in group:
 #
 # p = Point(5, 7, 9)
 # print(len(p))
+
+
+
 # import math
 # class Point:
 #     __slots__ = ('x', 'y', '__length')
@@ -1652,12 +1657,19 @@ for k in group:
 #     @property
 #     def length(self):
 #         return self.__length
-
+#
+#     @length.setter
+#     def length(self, value):
+#         self.__length = value
+#
 #
 # pt = Point(1, 2)
 # # pt.z = 5
 # # print(pt.__dict__)
-# print(pt.x, pt.y)
+# pt.length = 10
+# print(pt.x, pt.y, pt.length)
+
+
 
 # class Point:
 #     __slots__ = ('x', 'y')
@@ -1674,12 +1686,12 @@ for k in group:
 #
 #
 # pt = Point(10, 20)
-# pt = Point(10, 20)
+# pt2 = Point2D(10, 20)
 #
 # print("pt =", pt.__sizeof__())
-# print("pt2 =", pt.__sizeof__())
+# print("pt2 =", pt2.__sizeof__() + pt2.__dict__.__sizeof__())
 
-# -------
+# --------------------------------------------------
 
 # class StripChare:
 #     def __init__(self, chars):
@@ -1760,34 +1772,36 @@ for k in group:
 # print(obj.quad(4))
 # print(obj.doubler(5))
 
-# class StringD:
-#     def __init__(self, value=None):
-#         if value:
-#             self.set(value)
-#
-#     def get(self):
-#         return self.__value
-#
-#     def set(self, value):
-#         self.value = value
-#
-# class Person:
-#     def __init__(self, name, surname):
-#         self.__name = name
-#         self.__surname = surname
-#
-#     @property
-#     def name(self, value):
-#         self.__name = value
-#
-#     @name.setter
-#     def name(self, value):
-#         self.__name = value
-#
-#     @property
-#     def surname(self, value):
-#         self.__surname = value
-#
-#     @surname.setter
-#     def name(self, value):
-#         self.__name = value
+#----------------------------------------------------------------
+
+class StringD:
+    def __init__(self, value=None):
+        if value:
+            self.set(value)
+
+    def get(self):
+        return self.__value
+
+    def set(self, value):
+        self.value = value
+
+class Person:
+    def __init__(self, name, surname):
+        self.__name = name
+        self.__surname = surname
+
+    @property
+    def name(self, value):
+        self.__name = value
+
+    @name.setter
+    def name(self, value):
+        self.__name = value
+
+    @property
+    def surname(self, value):
+        self.__surname = value
+
+    @surname.setter
+    def name(self, value):
+        self.__name = value
