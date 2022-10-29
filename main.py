@@ -1693,7 +1693,51 @@
 
 # --------------------------------------------------
 
-# class StripChare:
+# class Point:
+#     __slots__ = ('x', 'y')
+#
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#
+# class Point3D(Point):
+#     # def __init__(self, x, y):
+#     #     self.x = x
+#     #     self.y = y
+#     pass
+#
+#
+# pt = Point(1, 2)
+# pt2 = Point3D(10, 20)
+# pt2.z = 30
+# print(pt2.z)
+# print(pt2.__dict__)
+
+#------------------------------------ФУНКТОРЫ----------------------------------------------
+
+
+# class Counter:
+#     def __init__(self):
+#         self.__counter = 0
+#
+#     def __call__(self, *args, **kwargs):
+#         self.__counter += 1
+#         print(self.__counter)
+#
+#
+# c1 = Counter()
+# c1()
+# c1()
+# c1()
+# c2 = Counter()
+# c2()
+# c2()
+# c2()
+#----------------------------------------------------------
+
+
+# class StripChars:
 #     def __init__(self, chars):
 #         self.__chars = chars
 #
@@ -1704,9 +1748,11 @@
 #         return args[0].strip(self.__chars)
 #
 #
+# s1 = StripChars("?:!.; ")
+# print(s1("  ?Hello World!  "))
 #
-# s1 = StripChare("?:!.;")
-# print(s1(" ?Hello World!   "))
+# -----------------------------------------------------------
+#   КЛАСС КАК ДЕКОРАТОР
 #
 #
 # class MyDecorator:
@@ -1716,7 +1762,7 @@
 #     def __call__(self, *args, **kwargs):
 #         print("Перед вызовом функции")
 #         self.func()
-#         print("После вызова ф")
+#         print("После вызова функции")
 # @MyDecorator
 # def func1():
 #     print("func")
@@ -1741,7 +1787,7 @@
 # @MyDecorator("test2")
 # def add(a, b):
 #     print(a, b)
-#
+# #
 #
 #
 #
@@ -1774,34 +1820,34 @@
 
 #----------------------------------------------------------------
 
-class StringD:
-    def __init__(self, value=None):
-        if value:
-            self.set(value)
-
-    def get(self):
-        return self.__value
-
-    def set(self, value):
-        self.value = value
-
-class Person:
-    def __init__(self, name, surname):
-        self.__name = name
-        self.__surname = surname
-
-    @property
-    def name(self, value):
-        self.__name = value
-
-    @name.setter
-    def name(self, value):
-        self.__name = value
-
-    @property
-    def surname(self, value):
-        self.__surname = value
-
-    @surname.setter
-    def name(self, value):
-        self.__name = value
+# class StringD:
+#     def __init__(self, value=None):
+#         if value:
+#             self.set(value)
+#
+#     def get(self):
+#         return self.__value
+#
+#     def set(self, value):
+#         self.value = value
+#
+# class Person:
+#     def __init__(self, name, surname):
+#         self.__name = name
+#         self.__surname = surname
+#
+#     @property
+#     def name(self, value):
+#         self.__name = value
+#
+#     @name.setter
+#     def name(self, value):
+#         self.__name = value
+#
+#     @property
+#     def surname(self, value):
+#         self.__surname = value
+#
+#     @surname.setter
+#     def name(self, value):
+#         self.__name = value

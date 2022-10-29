@@ -11,7 +11,6 @@ class ValidGoods:
         instance.__dict__[self.__name] = value
 
 
-
 class Order:
     price = ValidGoods()
     quantity = ValidGoods()
@@ -21,13 +20,13 @@ class Order:
         self.price = price
         self.quantity = quantity
 
-    def summe_total(self):
-        summe = self.price * self.quantity
-        return summe
+    def sum_total(self):
+        sum = self.price * self.quantity
+        return sum
 
 
 g1 = Order('apple', 5, 10)
 print(f"Тест:\nOrder{g1.name, g1.price, g1.quantity}")
 print()
-print(g1.summe_total())
+print(g1.sum_total())
 
