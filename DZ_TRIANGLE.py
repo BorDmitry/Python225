@@ -6,8 +6,6 @@ class ValidTriang:
         return instance.__dict__[self.__name]
 
     def __set__(self, instance, value):
-        # if value <= 0:
-        #     raise ValueError(f"{self.__name} должно быть положительным целым значением")
         if not isinstance(value, int) or value <= 0:
             raise ValueError(f"Переменная '{self.__name}' должно быть положительным целым значением")
         instance.__dict__[self.__name] = value
