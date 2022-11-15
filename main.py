@@ -170,7 +170,7 @@
 # with open("text1.txt", 'w', encoding='UTF-8') as f:
 #     print(f.write(text))
 
-# f = open(r'C:\Users\Dmitry\Scripts\HomeWork\text.txt', 'a', encoding='UTF-8')
+# f = open(r'C:\Users\Dmitry\Scripts\Python\text.txt', 'a', encoding='UTF-8')
 # # f.write('Hello,\nWorld')
 # f.write('\nnew text')
 # f.close()

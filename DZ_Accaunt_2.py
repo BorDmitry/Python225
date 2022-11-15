@@ -156,7 +156,7 @@ print()
 acc.print_info()
 
 
-# C:\Users\Dmitry\Scripts\HomeWork\venv\Scripts\python.exe C:/Users/Dmitry/Scripts/HomeWork/DZ_Accaunt_2.py
+# C:\Users\Dmitry\Scripts\Python\venv\Scripts\python.exe C:/Users/Dmitry/Scripts/Python/DZ_Accaunt_2.py
 # Счёт #12345 принадлежит Долгих был открыт.
 # **************************************************
 # Инф о счёте
