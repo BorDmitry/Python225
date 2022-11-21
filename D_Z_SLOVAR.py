@@ -37,4 +37,3 @@ def write_json(person_dict, num):
 
 for i in range(5):
     write_json(gen_person()[0], gen_person()[1])
-    
