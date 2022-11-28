@@ -1,88 +1,64 @@
 import json
 
-data = {"Россия": "Москва"}
 
-
+def add_decor(func):
+    def wrap(*args, filename):
+        try:
+            data = json.load(open(filename))
+        except FileNotFoundError:
+            data = {}
+        func(*args, filename)
+        print("Файл сохранён")
+    return wrap
 
 
 class Paises:
-    name1 = Try_Exept()
-
     def __init__(self, pais, capital):
         self.pais = pais
         self.capital = capital
         data[self.pais] = self.capital
 
     def __str__(self):
-        a = ''
-        a += str(f"{self.pais}: {self.capital}") + "\n"
         return f'{self.pais}: {self.capital}'
 
-    def load_data(func):
-        def wrap(*args, filename):
-            try:
-                data = json.load(open(file))
-            except FileNotFoundError:
-                data = {}
-            func(*args, filename)
-            print("Файл сохранён")
-        return wrap()
-
     @ classmethod
-    @ load_data
-    def add_country(cls, new_pais, new_capital, file):
-        try:
-            data1 = json.load(open(file))
-        except FileNotFoundError:
-            data1 = {}
+    @ add_decor
+    def add_country(cls, new_pais, new_capital, filename):
+        data[new_pais] = new_capital
 
-        data1[new_pais] = new_capital
-
-        with open(file, 'w') as f:
-            data1[new_pais] = new_capital
-            json.dump(data1, f, indent=2, ensure_ascii=False)
+        with open(filename, 'w') as f:
+            data[new_pais] = new_capital
+            json.dump(data, f, indent=2, ensure_ascii=False)
 
     @classmethod
-    def remove_country(self, del_country, file ):
-        try:
-            data1 = json.load(open(file))
-        except FileNotFoundError:
-            data1 = {}
+    @add_decor
+    def remove_country(self, del_country, filename):
+        if del_country in data:
+            del data[del_country]
 
-        if del_country in data1:
-            del data1[del_country]
-
-            with open(file, 'w') as f:
-                json.dump(data1, f, indent=2, ensure_ascii=False)
+            with open(filename, 'w') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
         else:
             print("Такой страны в базе нет.")
 
     @classmethod
-    def search_data(cls, pais, file):
-        try:
-            data1 = json.load(open(file))
-        except FileNotFoundError:
-            data1 = {}
-
-        if pais in data1:
+    @add_decor
+    def search_data(cls, pais, filename):
+        if pais in data:
             print(f"Страна {pais} есть в базе."
-                  f" Её столица - {data1[pais]}.")
+                  f" Её столица - {data[pais]}.")
         else:
             print(f"Страны {pais} нет в базе.")
 
 
     @classmethod
+    @add_decor
     def cheng_capital(cls, pais, new_capital, filename):
-        try:
-            data1 = json.load(open(filename))
-        except FileNotFoundError:
-            data1 = {}
-
-        if pais in data1:
-            data1[pais] = new_capital
+        if pais in data:
+            data[pais] = new_capital
 
             with open(filename, 'w') as f:
-                json.dump(data1, f, indent=2, ensure_ascii=False)
+                json.dump(data, f, indent=2, ensure_ascii=False)
         else:
             print(f"Страны {pais} нет в базе.")
 
@@ -92,9 +68,10 @@ class Paises:
             print(json.load(f))
 
 
+data = {"Россия": "Москва"}
 filename1 = 'list_of_countries.json'
-with open(filename1, 'w') as fw:
-   json.dump(data, fw, indent=2, ensure_ascii=False)
+with open(filename1, 'w') as f_save:
+   json.dump(data, f_save, indent=2, ensure_ascii=False)
 
 
 n = 0
@@ -112,27 +89,163 @@ while 0 <= n <= 6:
     if n == 1:
         new_pais = input("Введите название страны (с заглавной буквы): ")
         new_capital = input("Введите название столицы страны (с заглавной буквы): ")
-        Paises.add_country(new_pais, new_capital, 'list_of_countries.json')
+        Paises.add_country(new_pais, new_capital, filename='list_of_countries.json')
         print(f"Страна {new_pais} добавлена")
     elif n == 2:
         name = input("Введите имя страны (с заглавной буквы) для удаления: ")
-        Paises.remove_country(name, 'list_of_countries.json')
-        print("Файл сохранён")
+        Paises.remove_country(name, filename='list_of_countries.json')
 
     elif n == 3:
         name = input("Введите название (с заглавной буквы) страны для поиска: ")
-        Paises.search_data(name, 'list_of_countries.json')
+        Paises.search_data(name, filename='list_of_countries.json')
 
     elif n == 4:
         name = input("Введите название страны (с заглавной буквы) для редактирования: ")
         new_value = input("Введите новое название столицы (с заглавной буквы): ")
-        Paises.cheng_capital(name, new_value, 'list_of_countries.json')
-        print("Файл сохранён")
+        Paises.cheng_capital(name, new_value, filename='list_of_countries.json')
     elif n == 5:
-        Paises.info_from_file('list_of_countries.json')
+        Paises.info_from_file(filename='list_of_countries.json')
     elif n == 6:
         print("Программа завершена")
         break
 
-    def print_file(self):
-        print("Файл сохранён")
+# ВЫВОД:
+
+# C:\Users\Dmitry\Scripts\HomeWork\venv\Scripts\python.exe C:/Users/Dmitry/Scripts/HomeWork/D_Z_Countries_Decor.py
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 5
+# {'Россия': 'Москва'}
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 1
+# Введите название страны (с заглавной буквы): Франция
+# Введите название столицы страны (с заглавной буквы): Paris
+# Файл сохранён
+# Страна Франция добавлена
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 4
+# Введите название страны (с заглавной буквы) для редактирования: Франция
+# Введите новое название столицы (с заглавной буквы): Париж
+# Файл сохранён
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 5
+# {'Россия': 'Москва', 'Франция': 'Париж'}
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 1
+# Введите название страны (с заглавной буквы): Голландия
+# Введите название столицы страны (с заглавной буквы): Амстердам
+# Файл сохранён
+# Страна Голландия добавлена
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 2
+# Введите имя страны (с заглавной буквы) для удаления: Голландия
+# Файл сохранён
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 5
+# {'Россия': 'Москва', 'Франция': 'Париж'}
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 1
+# Введите название страны (с заглавной буквы): Испания
+# Введите название столицы страны (с заглавной буквы): Мадрид
+# Файл сохранён
+# Страна Испания добавлена
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 3
+# Введите название (с заглавной буквы) страны для поиска: Россия
+# Страна Россия есть в базе. Её столица - Москва.
+# Файл сохранён
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 5
+# {'Россия': 'Москва', 'Франция': 'Париж', 'Испания': 'Мадрид'}
+# ****************************************
+# Выбор действия:
+# 1 - добавление данных
+# 2 - удаление данных
+# 3 - поиск данных
+# 4 - редактирование данных
+# 5 - просмотр данных
+# 6 - завершение работы
+#
+# Ввод: 6
+# Программа завершена
+#
+# Process finished with exit code 0
