@@ -56,7 +56,7 @@ class UserInterface:
 
     @add_title("Сообщение об ошибке")
     def show_incorrect_title_error(self, user_title):
-        print(f"Фильма с пазванием {user_title} не существует")
+        print(f"Фильма с названием {user_title} не существует")
 
     @add_title("Удаление фильма")
     def remove_single_film(self, film):

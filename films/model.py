@@ -12,7 +12,7 @@ class Film:
         self.studio = studio
         self.actors = actors
 
-    def __str__(self):                         # Для представлеения каталога фильмов в виде
+    def __str__(self):                         # Для представлеения каталога фильмов в виде: титул (жанр)
         return f"{self.title} ({self.genre})"
 
 
