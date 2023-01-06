@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ClassWorkPython225.iml" filepath="$PROJECT_DIR$/.idea/ClassWorkPython225.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Python/.idea/HomeWork.iml" filepath="$PROJECT_DIR$/../Python/.idea/HomeWork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Python.iml" filepath="$PROJECT_DIR$/.idea/Python.iml" />
     </modules>
   </component>
 </project>
